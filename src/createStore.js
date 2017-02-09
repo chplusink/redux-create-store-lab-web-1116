@@ -1,9 +1,18 @@
 export default function createStore(reducer){
+  const store = {}
+  let state
 
-}
+  store.getState = function() {
+    return state
+  }
 
-// solution
-export default function createStore(reducer){
+  store.dispatch = function(action) {
+    state = reducer(state, action)
+    render()
+  }
+  store.dispatch({type: 'ARBITRARY'})
+  return store
+
 }
 
 function render(){
